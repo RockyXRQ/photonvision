@@ -151,6 +151,7 @@ public class USBCameraSource extends VisionSource {
         } else if (quirks.hasQuirk(CameraQuirk.See3Cam_24CUG)) {
             settables = new See3Cam24CUGSettables(config, camera);
         } else if (quirks.hasQuirk(CameraQuirk.Ks1a293)) {
+            logger.debug("Using KS1A293 Settables");
             settables = new Ks1a293CameraSettables(config, camera);
         } else {
             logger.debug("Using Generic USB Cam Settables");
