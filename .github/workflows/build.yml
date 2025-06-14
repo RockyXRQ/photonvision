@@ -42,10 +42,6 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - os: windows-2022
-            architecture: x64
-          - os: macos-14
-            architecture: aarch64
           - os: ubuntu-22.04
 
     name: "Photonlib - Build Examples - ${{ matrix.os }}"
@@ -163,18 +159,10 @@ jobs:
           path: photon-lib/build/generated/vendordeps/photonlib-*.json
 
   build-photonlib-host:
-    env:
-      MACOSX_DEPLOYMENT_TARGET: 13
     strategy:
       fail-fast: false
       matrix:
         include:
-          - os: windows-2022
-            artifact-name: Win64
-            architecture: x64
-          - os: macos-14
-            artifact-name: macOS
-            architecture: aarch64
           - os: ubuntu-22.04
             artifact-name: Linux
 
@@ -277,18 +265,6 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - os: windows-latest
-            artifact-name: Win64
-            architecture: x64
-            arch-override: winx64
-          - os: macos-latest
-            artifact-name: macOS
-            architecture: x64
-            arch-override: macx64
-          - os: macos-latest
-            artifact-name: macOSArm
-            architecture: x64
-            arch-override: macarm64
           - os: ubuntu-22.04
             artifact-name: Linux
             architecture: x64
@@ -353,12 +329,6 @@ jobs:
           - os: ubuntu-22.04
             artifact-name: jar-Linux
             extraOpts: -Djdk.lang.Process.launchMechanism=vfork
-          - os: windows-latest
-            artifact-name: jar-Win64
-            extraOpts: ""
-          - os: macos-latest
-            artifact-name: jar-macOS
-            architecture: x64
 
     runs-on: ${{ matrix.os }}
 
